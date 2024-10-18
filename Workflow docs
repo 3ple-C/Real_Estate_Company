@@ -1,0 +1,7 @@
+## Errors faced.
+### 1. Fatal error: Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\Real_Estate_Company\functions\Category.php:18 Stack trace: #0.
+
+The error aboe meant that the connection property of the construct function in the Category class was returning null. This occured because the $db argument which was being accepted by the construct when the class is initiialized was not used within the construct function which was supposed to link itsef to the connection property of the Categoy class.
+
+### 2. Faced errors in trying to list the amount of products on the site diectly from the webpage. 
+This was due to the name attribute that catches the category of each product being spelt wrongly. This tells me that when listing products linked with their category there will be errors if the categories arent gotten correctly. It even affects how the program is able to fetch items from the table on the database.
