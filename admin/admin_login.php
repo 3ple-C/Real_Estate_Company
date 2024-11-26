@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <!doctype html>
 <html lang="en">
 
@@ -6,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <title>Royal Haven Homes - & Lands Integrated Services</title>
-    <meta name="description" content="Morden Bootstrap HTML5 Template">
+    <meta name="description" content="Real estate properties ventures">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 

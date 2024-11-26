@@ -12,9 +12,6 @@ $properties = $property->getAllProperties();
 
 
 ?>
-
-
-
 <main class="main__content_wrapper">
     <!-- Start Hero section -->
     <div class="hero__section hero__section--bg">
@@ -267,7 +264,7 @@ $properties = $property->getAllProperties();
                                     <article class="featured__card">
                                         <div class="featured__thumbnail position-relative">
                                             <div class="media">
-                                                <a class="featured__thumbnail--link" href="listing-details.php"><img class="featured__thumbnail--img" src="functions/<?php echo $property['image'] ?>" alt="featured-img"></a>
+                                                <a class="featured__thumbnail--link" href="listing-details.php?id=<?php echo $property['id'] ?>"><img class="featured__thumbnail--img" src="functions/<?php echo $property['image'] ?>" alt="featured-img"></a>
                                             </div>
                                             <div class="featured__badge">
                                                 <span class="badge__field">Featured</span>
@@ -277,7 +274,7 @@ $properties = $property->getAllProperties();
                                         </div>
                                         <div class="featured__content">
                                             <div class="featured__content--top d-flex align-items-center justify-content-between">
-                                                <h3 class="featured__card--title"><a href="listing-details.php"><?php echo $property['name'] ?></a></h3>
+                                                <h3 class="featured__card--title"><a href="listing-details.php?id=<?php echo $property['id'] ?>"><?php echo $property['name'] ?></a></h3>
                                                 <span class="featured__card--price">$<?php echo $property['price'] ?></span>
                                             </div>
                                             <p class="featured__content--desc">

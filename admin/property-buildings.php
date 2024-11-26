@@ -18,7 +18,7 @@ $properties = $property->getAllProperties();
 <head>
     <meta charset="utf-8">
     <title>Royal Haven Homes - & Lands Integrated Services</title>
-    <meta name="description" content="Morden Bootstrap HTML5 Template">
+    <meta name="description" content="Royal Haven Homes - & Lands Integrated Services">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
@@ -74,6 +74,16 @@ $properties = $property->getAllProperties();
                         <h2 class="reviews__heading--title">Building Properties</h2>
                         <p class="reviews__heading--desc">We are glad to see you again!</p>
                     </div>
+
+                    <?php if (isset($_SESSION['message'])): ?>
+                        <div class="alert  alert-<?php echo $_SESSION['message-type']; ?>">
+                            <?php echo $_SESSION['message'];
+                            unset($_SESSION['message']);
+                            unset($_SESSION['message-type']);
+                            ?>
+                        </div>
+                    <?php endif; ?>
+                    
                     <div class="properties__wrapper">
                         <div class="properties__table table-responsive">
                             <table class="properties__table--wrapper">
@@ -140,8 +150,8 @@ $properties = $property->getAllProperties();
                                                             </svg>
                                                         </button>
                                                         <ul class="dropdown-menu sold-out__user--dropdown " data-popper-placement="bottom-start">
-                                                            <li><a data-bs-toggle="modal" href="#">Edit</a></li>
-                                                            <li><a data-bs-toggle="modal" href="#">Remove</a></li>
+                                                            <li><a href="./edit-properties.php?id=<?php echo $property['id'] ?>">Edit <?php echo $property['id'] ?></a></li>
+                                                            <li><a data-bs-toggle="modal" href="../functions/delete-property.php?id=<?php echo $property['id'] ?>" onclick="return confirm('Are you sure you want to delete this property?')">Remove</a></li>
                                                         </ul>
                                                     </div>
                                                 </td>

@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php session_start();
+
+if ((!isset($_SESSION['user_role'])) || $_SESSION['user_role'] !== 'admin') {
+    # If the user is not an admin, redirect to an error/dashboard page
+    $_SESSION['message'] = 'Access denied. You are not authorized to access this page';
+    $_SESSION['message-type'] = 'danger';
+    header('Location:../index.php');
+}?>
 
 <!doctype html>
 <html lang="en">
@@ -6,7 +13,7 @@
 <head>
     <meta charset="utf-8">
     <title>Royal Haven Homes - & Lands Integrated Services</title>
-    <meta name="description" content="Morden Bootstrap HTML5 Template">
+    <meta name="description" content="Real estate properties ventures">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 

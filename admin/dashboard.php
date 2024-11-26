@@ -24,7 +24,7 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <meta charset="utf-8">
     <title>Royal Haven's Home | Real Estate Agency</title>
-    <meta name="description" content="Morden Bootstrap HTML5 Template">
+    <meta name="description" content="Royal Haven Homes - & Lands Integrated Services">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
@@ -78,6 +78,15 @@ if (!isset($_SESSION['user_id'])) {
 
         <div class="page__body--wrapper" id="dashbody__page--body__wrapper">
             <?php include 'admin_inc/header.php' ?>
+
+            <?php if (isset($_SESSION['message'])): ?>
+                <div class="alert  alert-<?php echo $_SESSION['message-type']; ?>">
+                    <?php echo $_SESSION['message'];
+                    unset($_SESSION['message']);
+                    unset($_SESSION['message-type']);
+                    ?>
+                </div>
+            <?php endif; ?>
             <main class="main__content_wrapper">
                 <!-- dashboard container -->
                 <div class="dashboard__container d-flex">
@@ -99,7 +108,7 @@ if (!isset($_SESSION['user_id'])) {
 
                         </div>
                     </div>
-                    
+
                 </div>
                 <!-- dashboard container .\ -->
 
@@ -145,7 +154,4 @@ if (!isset($_SESSION['user_id'])) {
 
 
 </body>
-
-<!-- Mirrored from risingtheme.com/html/demo-newvilla/newvilla/admin/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 17 Sep 2024 11:53:37 GMT -->
-
 </html>

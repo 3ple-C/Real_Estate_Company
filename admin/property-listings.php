@@ -18,7 +18,7 @@ $properties = $property->getAllProperties();
 <head>
     <meta charset="utf-8">
     <title>Royal Haven Homes - & Lands Integrated Services</title>
-    <meta name="description" content="Morden Bootstrap HTML5 Template">
+    <meta name="description" content="Royal Haven Homes - & Lands Integrated Services">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
@@ -57,6 +57,7 @@ $properties = $property->getAllProperties();
     </div>
     <!-- Preloader end -->
 
+
     <div class="dashboard__page--wrapper">
         <?php include 'admin_inc/sidebar.php' ?>
 
@@ -71,9 +72,13 @@ $properties = $property->getAllProperties();
                         <h2 class="reviews__heading--title">My Properties</h2>
                         <p class="reviews__heading--desc">We are glad to see you again!</p>
                     </div>
+
                     <?php if (isset($_SESSION['message'])): ?>
-                        <div class="alert">
-                            <?php echo $_SESSION['message']; ?>
+                        <div class="alert  alert-<?php echo $_SESSION['message-type']; ?>">
+                            <?php echo $_SESSION['message'];
+                            unset($_SESSION['message']);
+                            unset($_SESSION['message-type']);
+                            ?>
                         </div>
                     <?php endif; ?>
 
@@ -139,9 +144,9 @@ $properties = $property->getAllProperties();
                                                                 <circle cx="1.5" cy="15.5" r="1.5" fill="currentColor" />
                                                             </svg>
                                                         </button>
-                                                        <ul class="dropdown-menu sold-out__user--dropdown " data-popper-placement="bottom-start">
-                                                            <li><a data-bs-toggle="modal" href="#">Edit</a></li>
-                                                            <li><a data-bs-toggle="modal" href="../functions/delete-property.php?id=<?php echo $property['id'] ?>" onclick="return confirm('Are you sure you want to delete this property?')">Remove</a></li>
+                                                        <ul class="dropdown-menu sold-out__user--dropdown ">
+                                                            <li><a href="./edit-properties.php?id=<?php echo $property['id'] ?>">Edit <?php echo $property['id'] ?></a></li>
+                                                            <li><a href="../functions/delete-property.php?id=<?php echo $property['id'] ?>" onclick="return confirm('Are you sure you want to delete this property?')">Remove</a></li>
                                                         </ul>
                                                     </div>
                                                 </td>
@@ -210,78 +215,10 @@ $properties = $property->getAllProperties();
             </main>
         </div>
 
-
     </div>
 
 
 
-    <!-- Modal Add Contact -->
-    <div class="modal fade" id="modaladdcontact" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal__contact--main__content">
-                <div class="modal__contact--header d-flex align-items-center justify-content-between">
-                    <h3 class="modal__contact--header__title">Add Contact</h3>
-                    <button type="button" class="modal__contact--close__btn" data-bs-dismiss="modal" aria-label="Close">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12.711" height="12.711" viewBox="0 0 12.711 12.711">
-                            <g id="Group_7205" data-name="Group 7205" transform="translate(-113.644 -321.644)">
-                                <path id="Vector" d="M0,9.883,9.883,0" transform="translate(115.059 323.059)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-                                <path id="Vector-2" data-name="Vector" d="M9.883,9.883,0,0" transform="translate(115.059 323.059)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-                            </g>
-                        </svg>
-                    </button>
-                </div>
-                <div class="modal-body modal__contact--body">
-                    <div class="modal__contact--form">
-                        <form action="#">
-                            <div class="modal__contact--form__input mb-20">
-                                <label class="modal__contact--input__label" for="name">Contact Name</label>
-                                <input class="modal__contact--input__field" placeholder="Enter Name" id="name" type="text">
-                            </div>
-                            <div class="modal__contact--form__input mb-20">
-                                <label class="modal__contact--input__label">Description</label>
-                                <textarea class="modal__contact--textarea__field" placeholder="Description"></textarea>
-                            </div>
-                            <div class="modal__contact--footer">
-                                <button class="solid__btn border-0" type="submit">Contact</button>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Modal Add Calls -->
-    <div class="modal fade" id="modaladdcalls" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal__contact--main__content">
-                <div class="modal-body modal__contact--body">
-                    <div class="modal__calling--wrapper">
-                        <div class="modal__calling--author">
-                            <img class="modal__calling--author__thumb" src="assets/img/dashboard/calling-author.png" alt="img">
-                            <h3 class="modal__calling--author__name">William Heineman</h3>
-                            <span class="modal__calling--author__subtitle">Calling...</span>
-                        </div>
-                        <div class="modal__calls--footer d-flex justify-content-center">
-                            <button class="call__receive border-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone-call" class="lucide lucide-phone-call">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                                    <path d="M14.05 2a9 9 0 0 1 8 7.94"></path>
-                                    <path d="M14.05 6A5 5 0 0 1 18 10"></path>
-                                </svg>
-                            </button>
-                            <button class="call__cancel border-0 color-accent-2" data-bs-dismiss="modal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" class="lucide lucide-phone">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                                </svg>
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Scroll top bar -->
     <button id="scroll__top"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
@@ -314,3 +251,7 @@ $properties = $property->getAllProperties();
 </body>
 
 </html>
+
+
+
+
